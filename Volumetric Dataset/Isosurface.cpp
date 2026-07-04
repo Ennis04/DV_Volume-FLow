@@ -38,9 +38,43 @@
 #include "vtkRecursiveDividingCubes.h"
 #include "vtkScalarBarWidget.h"
 #include "vtkScalarBarActor.h"
+#include "vtkCommand.h"
+#include <iostream>
+#include <string>
+
+class IsoKeyInterpreter : public vtkCommand 
+{
+public:
+    static IsoKeyInterpreter *New() { return new IsoKeyInterpreter; }
+    
+    vtkContourFilter *contour;
+    double currentIsoValue;
+
+    void Execute(vtkObject* caller, unsigned long eventId, void *callData) override
+    {
+        vtkRenderWindowInteractor *iren = reinterpret_cast<vtkRenderWindowInteractor *>(caller);
+        switch(iren->GetKeyCode())
+        {
+            case '+':
+            case '=':
+                currentIsoValue += 50.0;
+                contour->SetValue(0, currentIsoValue);
+                std::cout << "Iso-value increased to: " << currentIsoValue << std::endl;
+                break;
+            case '-':
+            case '_':
+                currentIsoValue -= 50.0;
+                contour->SetValue(0, currentIsoValue);
+                std::cout << "Iso-value decreased to: " << currentIsoValue << std::endl;
+                break;
+        }
+        iren->Render();
+    }
+};
 
 int main (int argc, char **argv)
 {
+
 
   // Create the renderer, the render window, and the interactor. The renderer
   // draws into the render window, the interactor enables mouse- and 
@@ -52,13 +86,35 @@ int main (int argc, char **argv)
 	iren->SetRenderWindow(renWin);
 
 
-  // vtkVolumeReader16 reads in the head CT data set.  
+  // vtkVolumeReader16 reads in the head CT data set.
+  // Parse command line arguments for dataset loading
+  std::string filePrefix = "data/headsq/quarter";
+  int imageRange = 93;
+  int dataDimX = 64, dataDimY = 64;
+  double spacingX = 3.2, spacingY = 3.2, spacingZ = 1.5;
+
+  if (argc > 1) {
+      filePrefix = argv[1];
+  }
+  if (argc > 2) {
+      imageRange = std::atoi(argv[2]);
+  }
+  if (argc > 4) {
+      dataDimX = std::atoi(argv[3]);
+      dataDimY = std::atoi(argv[4]);
+  }
+  if (argc > 7) {
+      spacingX = std::atof(argv[5]);
+      spacingY = std::atof(argv[6]);
+      spacingZ = std::atof(argv[7]);
+  }
+
 	vtkVolume16Reader *reader= vtkVolume16Reader::New();
-    reader->SetDataDimensions (64,64);
-    reader->SetImageRange (1,93);
+    reader->SetDataDimensions (dataDimX, dataDimY);
+    reader->SetImageRange (1, imageRange);
     reader->SetDataByteOrderToLittleEndian();
-	reader->SetFilePrefix("data/headsq/quarter");
-    reader->SetDataSpacing (3.2, 3.2, 1.5);
+	reader->SetFilePrefix(filePrefix.c_str());
+    reader->SetDataSpacing (spacingX, spacingY, spacingZ);
 
 
   // This next section creates two contours for the density data.  A
@@ -147,6 +203,13 @@ int main (int argc, char **argv)
   // Initialize the event loop and then start it.
   iren->Initialize();
   renWin->SetWindowName( "Simple Volume Renderer" );
+
+  // To register the keyboard callback
+  IsoKeyInterpreter *key = IsoKeyInterpreter::New();
+  key->contour = contourExtractor;
+  key->currentIsoValue = 500.0;
+  iren->AddObserver(vtkCommand::KeyPressEvent, key);
+
   renWin->Render();
   iren->Start(); 
 
