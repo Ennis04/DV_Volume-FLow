@@ -174,6 +174,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
+    <ProjectReference Include="D:\UTM\Year 3\Sem 2\DATA VISUALISATION\Project 2\DV_Volume-FLow\build\CombinedVolume.vcxproj">
+      <Project>{B68C2AD2-0361-3E41-90CE-07A65B8186E2}</Project>
+      <Name>CombinedVolume</Name>
+    </ProjectReference>
     <ProjectReference Include="D:\UTM\Year 3\Sem 2\DATA VISUALISATION\Project 2\DV_Volume-FLow\build\FlowVis.vcxproj">
       <Project>{5EC2FB63-7A55-3C25-B548-BB31185264FA}</Project>
       <Name>FlowVis</Name>

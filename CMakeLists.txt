@@ -37,11 +37,16 @@ add_executable(FlowVis
     "Flow Dataset/flowVisSample.cpp"
 )
 
+add_executable(CombinedVolume
+    "Volumetric Dataset/CombinedVolume.cpp"
+)
+
 target_link_libraries(Isosurface PRIVATE ${VTK_LIBRARIES})
 target_link_libraries(RayMarching PRIVATE ${VTK_LIBRARIES})
 target_link_libraries(FlowVis PRIVATE ${VTK_LIBRARIES})
+target_link_libraries(CombinedVolume PRIVATE ${VTK_LIBRARIES})
 
 vtk_module_autoinit(
-    TARGETS Isosurface RayMarching FlowVis
+    TARGETS Isosurface RayMarching FlowVis CombinedVolume
     MODULES ${VTK_LIBRARIES}
 )
