@@ -65,12 +65,16 @@ CMAKE_BINARY_DIR = /Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volum
 # The main recursive "all" target.
 all: CMakeFiles/Isosurface.dir/all
 all: CMakeFiles/RayMarching.dir/all
+all: CMakeFiles/CombinedRenderer.dir/all
+all: CMakeFiles/ennis.dir/all
 all: CMakeFiles/FlowVis.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/Isosurface.dir/codegen
 codegen: CMakeFiles/RayMarching.dir/codegen
+codegen: CMakeFiles/CombinedRenderer.dir/codegen
+codegen: CMakeFiles/ennis.dir/codegen
 codegen: CMakeFiles/FlowVis.dir/codegen
 .PHONY : codegen
 
@@ -81,6 +85,8 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/Isosurface.dir/clean
 clean: CMakeFiles/RayMarching.dir/clean
+clean: CMakeFiles/CombinedRenderer.dir/clean
+clean: CMakeFiles/ennis.dir/clean
 clean: CMakeFiles/FlowVis.dir/clean
 .PHONY : clean
 
@@ -91,7 +97,7 @@ clean: CMakeFiles/FlowVis.dir/clean
 CMakeFiles/Isosurface.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Isosurface.dir/build.make CMakeFiles/Isosurface.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Isosurface.dir/build.make CMakeFiles/Isosurface.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=3,4 "Built target Isosurface"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=5,6 "Built target Isosurface"
 .PHONY : CMakeFiles/Isosurface.dir/all
 
 # Build rule for subdir invocation for target.
@@ -108,7 +114,7 @@ Isosurface: CMakeFiles/Isosurface.dir/rule
 # codegen rule for target.
 CMakeFiles/Isosurface.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Isosurface.dir/build.make CMakeFiles/Isosurface.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=3,4 "Finished codegen for target Isosurface"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=5,6 "Finished codegen for target Isosurface"
 .PHONY : CMakeFiles/Isosurface.dir/codegen
 
 # clean rule for target.
@@ -123,7 +129,7 @@ CMakeFiles/Isosurface.dir/clean:
 CMakeFiles/RayMarching.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RayMarching.dir/build.make CMakeFiles/RayMarching.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RayMarching.dir/build.make CMakeFiles/RayMarching.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=5,6 "Built target RayMarching"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=7,8 "Built target RayMarching"
 .PHONY : CMakeFiles/RayMarching.dir/all
 
 # Build rule for subdir invocation for target.
@@ -140,7 +146,7 @@ RayMarching: CMakeFiles/RayMarching.dir/rule
 # codegen rule for target.
 CMakeFiles/RayMarching.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RayMarching.dir/build.make CMakeFiles/RayMarching.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=5,6 "Finished codegen for target RayMarching"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=7,8 "Finished codegen for target RayMarching"
 .PHONY : CMakeFiles/RayMarching.dir/codegen
 
 # clean rule for target.
@@ -149,13 +155,77 @@ CMakeFiles/RayMarching.dir/clean:
 .PHONY : CMakeFiles/RayMarching.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/CombinedRenderer.dir
+
+# All Build rule for target.
+CMakeFiles/CombinedRenderer.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CombinedRenderer.dir/build.make CMakeFiles/CombinedRenderer.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CombinedRenderer.dir/build.make CMakeFiles/CombinedRenderer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=1,2 "Built target CombinedRenderer"
+.PHONY : CMakeFiles/CombinedRenderer.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/CombinedRenderer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/CombinedRenderer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles 0
+.PHONY : CMakeFiles/CombinedRenderer.dir/rule
+
+# Convenience name for target.
+CombinedRenderer: CMakeFiles/CombinedRenderer.dir/rule
+.PHONY : CombinedRenderer
+
+# codegen rule for target.
+CMakeFiles/CombinedRenderer.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CombinedRenderer.dir/build.make CMakeFiles/CombinedRenderer.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=1,2 "Finished codegen for target CombinedRenderer"
+.PHONY : CMakeFiles/CombinedRenderer.dir/codegen
+
+# clean rule for target.
+CMakeFiles/CombinedRenderer.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CombinedRenderer.dir/build.make CMakeFiles/CombinedRenderer.dir/clean
+.PHONY : CMakeFiles/CombinedRenderer.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/ennis.dir
+
+# All Build rule for target.
+CMakeFiles/ennis.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ennis.dir/build.make CMakeFiles/ennis.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ennis.dir/build.make CMakeFiles/ennis.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=9,10 "Built target ennis"
+.PHONY : CMakeFiles/ennis.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/ennis.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ennis.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles 0
+.PHONY : CMakeFiles/ennis.dir/rule
+
+# Convenience name for target.
+ennis: CMakeFiles/ennis.dir/rule
+.PHONY : ennis
+
+# codegen rule for target.
+CMakeFiles/ennis.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ennis.dir/build.make CMakeFiles/ennis.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=9,10 "Finished codegen for target ennis"
+.PHONY : CMakeFiles/ennis.dir/codegen
+
+# clean rule for target.
+CMakeFiles/ennis.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ennis.dir/build.make CMakeFiles/ennis.dir/clean
+.PHONY : CMakeFiles/ennis.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/FlowVis.dir
 
 # All Build rule for target.
 CMakeFiles/FlowVis.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlowVis.dir/build.make CMakeFiles/FlowVis.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlowVis.dir/build.make CMakeFiles/FlowVis.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=1,2 "Built target FlowVis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=3,4 "Built target FlowVis"
 .PHONY : CMakeFiles/FlowVis.dir/all
 
 # Build rule for subdir invocation for target.
@@ -172,7 +242,7 @@ FlowVis: CMakeFiles/FlowVis.dir/rule
 # codegen rule for target.
 CMakeFiles/FlowVis.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlowVis.dir/build.make CMakeFiles/FlowVis.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=1,2 "Finished codegen for target FlowVis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles --progress-num=3,4 "Finished codegen for target FlowVis"
 .PHONY : CMakeFiles/FlowVis.dir/codegen
 
 # clean rule for target.

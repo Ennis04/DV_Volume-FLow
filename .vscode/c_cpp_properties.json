@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/opt/miniconda3/envs/vtk-env/include/vtk-9.6",
+                "/opt/miniconda3/envs/vtk-env/include/vtk-9.6/vtkscn/include",
+                "/opt/miniconda3/envs/vtk-env/include/vtk-9.6/token",
+                "/opt/miniconda3/envs/vtk-env/include/vtk-9.6/vtkkissfft",
+                "/opt/miniconda3/envs/vtk-env/include/vtk-9.6/vtkglad",
+                "/opt/miniconda3/envs/vtk-env/include"
+            ],
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "macos-clang-arm64"
+        }
+    ],
+    "version": 4
+}

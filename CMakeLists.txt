@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.20)
 
 project(DV_Volume_Flow)
 
@@ -33,15 +33,25 @@ add_executable(RayMarching
     "Volumetric Dataset/RayMarching.cpp"
 )
 
+add_executable(CombinedRenderer
+    "Volumetric Dataset/CombinedRenderer.cpp"
+)
+
+add_executable(ennis
+    "Volumetric Dataset/ennis.cpp"
+)
+
 add_executable(FlowVis
     "Flow Dataset/flowVisSample.cpp"
 )
 
 target_link_libraries(Isosurface PRIVATE ${VTK_LIBRARIES})
 target_link_libraries(RayMarching PRIVATE ${VTK_LIBRARIES})
+target_link_libraries(CombinedRenderer PRIVATE ${VTK_LIBRARIES})
 target_link_libraries(FlowVis PRIVATE ${VTK_LIBRARIES})
+target_link_libraries(ennis PRIVATE ${VTK_LIBRARIES})
 
 vtk_module_autoinit(
-    TARGETS Isosurface RayMarching FlowVis
+    TARGETS Isosurface RayMarching CombinedRenderer FlowVis ennis
     MODULES ${VTK_LIBRARIES}
 )

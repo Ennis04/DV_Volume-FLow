@@ -1,5 +1,7 @@
 /Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles/Isosurface.dir
 /Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles/RayMarching.dir
+/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles/CombinedRenderer.dir
+/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles/ennis.dir
 /Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles/FlowVis.dir
 /Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles/edit_cache.dir
 /Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/CMakeFiles/rebuild_cache.dir

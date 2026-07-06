@@ -143,6 +143,32 @@ RayMarching/fast:
 .PHONY : RayMarching/fast
 
 #=============================================================================
+# Target rules for targets named CombinedRenderer
+
+# Build rule for target.
+CombinedRenderer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CombinedRenderer
+.PHONY : CombinedRenderer
+
+# fast build rule for target.
+CombinedRenderer/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CombinedRenderer.dir/build.make CMakeFiles/CombinedRenderer.dir/build
+.PHONY : CombinedRenderer/fast
+
+#=============================================================================
+# Target rules for targets named ennis
+
+# Build rule for target.
+ennis: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ennis
+.PHONY : ennis
+
+# fast build rule for target.
+ennis/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ennis.dir/build.make CMakeFiles/ennis.dir/build
+.PHONY : ennis/fast
+
+#=============================================================================
 # Target rules for targets named FlowVis
 
 # Build rule for target.
@@ -178,6 +204,30 @@ Flow_Dataset/flowVisSample.s: Flow_Dataset/flowVisSample.cpp.s
 Flow_Dataset/flowVisSample.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FlowVis.dir/build.make CMakeFiles/FlowVis.dir/Flow_Dataset/flowVisSample.cpp.s
 .PHONY : Flow_Dataset/flowVisSample.cpp.s
+
+Volumetric_Dataset/CombinedRenderer.o: Volumetric_Dataset/CombinedRenderer.cpp.o
+.PHONY : Volumetric_Dataset/CombinedRenderer.o
+
+# target to build an object file
+Volumetric_Dataset/CombinedRenderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CombinedRenderer.dir/build.make CMakeFiles/CombinedRenderer.dir/Volumetric_Dataset/CombinedRenderer.cpp.o
+.PHONY : Volumetric_Dataset/CombinedRenderer.cpp.o
+
+Volumetric_Dataset/CombinedRenderer.i: Volumetric_Dataset/CombinedRenderer.cpp.i
+.PHONY : Volumetric_Dataset/CombinedRenderer.i
+
+# target to preprocess a source file
+Volumetric_Dataset/CombinedRenderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CombinedRenderer.dir/build.make CMakeFiles/CombinedRenderer.dir/Volumetric_Dataset/CombinedRenderer.cpp.i
+.PHONY : Volumetric_Dataset/CombinedRenderer.cpp.i
+
+Volumetric_Dataset/CombinedRenderer.s: Volumetric_Dataset/CombinedRenderer.cpp.s
+.PHONY : Volumetric_Dataset/CombinedRenderer.s
+
+# target to generate assembly for a file
+Volumetric_Dataset/CombinedRenderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CombinedRenderer.dir/build.make CMakeFiles/CombinedRenderer.dir/Volumetric_Dataset/CombinedRenderer.cpp.s
+.PHONY : Volumetric_Dataset/CombinedRenderer.cpp.s
 
 Volumetric_Dataset/Isosurface.o: Volumetric_Dataset/Isosurface.cpp.o
 .PHONY : Volumetric_Dataset/Isosurface.o
@@ -227,6 +277,30 @@ Volumetric_Dataset/RayMarching.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/RayMarching.dir/build.make CMakeFiles/RayMarching.dir/Volumetric_Dataset/RayMarching.cpp.s
 .PHONY : Volumetric_Dataset/RayMarching.cpp.s
 
+Volumetric_Dataset/ennis.o: Volumetric_Dataset/ennis.cpp.o
+.PHONY : Volumetric_Dataset/ennis.o
+
+# target to build an object file
+Volumetric_Dataset/ennis.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ennis.dir/build.make CMakeFiles/ennis.dir/Volumetric_Dataset/ennis.cpp.o
+.PHONY : Volumetric_Dataset/ennis.cpp.o
+
+Volumetric_Dataset/ennis.i: Volumetric_Dataset/ennis.cpp.i
+.PHONY : Volumetric_Dataset/ennis.i
+
+# target to preprocess a source file
+Volumetric_Dataset/ennis.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ennis.dir/build.make CMakeFiles/ennis.dir/Volumetric_Dataset/ennis.cpp.i
+.PHONY : Volumetric_Dataset/ennis.cpp.i
+
+Volumetric_Dataset/ennis.s: Volumetric_Dataset/ennis.cpp.s
+.PHONY : Volumetric_Dataset/ennis.s
+
+# target to generate assembly for a file
+Volumetric_Dataset/ennis.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ennis.dir/build.make CMakeFiles/ennis.dir/Volumetric_Dataset/ennis.cpp.s
+.PHONY : Volumetric_Dataset/ennis.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -235,18 +309,26 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... CombinedRenderer"
 	@echo "... FlowVis"
 	@echo "... Isosurface"
 	@echo "... RayMarching"
+	@echo "... ennis"
 	@echo "... Flow_Dataset/flowVisSample.o"
 	@echo "... Flow_Dataset/flowVisSample.i"
 	@echo "... Flow_Dataset/flowVisSample.s"
+	@echo "... Volumetric_Dataset/CombinedRenderer.o"
+	@echo "... Volumetric_Dataset/CombinedRenderer.i"
+	@echo "... Volumetric_Dataset/CombinedRenderer.s"
 	@echo "... Volumetric_Dataset/Isosurface.o"
 	@echo "... Volumetric_Dataset/Isosurface.i"
 	@echo "... Volumetric_Dataset/Isosurface.s"
 	@echo "... Volumetric_Dataset/RayMarching.o"
 	@echo "... Volumetric_Dataset/RayMarching.i"
 	@echo "... Volumetric_Dataset/RayMarching.s"
+	@echo "... Volumetric_Dataset/ennis.o"
+	@echo "... Volumetric_Dataset/ennis.i"
+	@echo "... Volumetric_Dataset/ennis.s"
 .PHONY : help
 
 
