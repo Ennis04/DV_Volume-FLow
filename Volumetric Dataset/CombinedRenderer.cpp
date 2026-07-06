@@ -93,6 +93,19 @@ public:
     std::string FilePrefix;
     double CurrentOpacityShift = 0.0;
 
+    void UpdateText()
+    {
+        if (!TextInstructions) return;
+        char buffer[256];
+        if (IsIsoMode) {
+            snprintf(buffer, sizeof(buffer), "Controls (Isosurface Mode):\n1 : Isosurface Mode\n2 : Ray Marching Mode\nm : Toggle Modes\n+/- : Change Iso-value\n\nCurrent Iso-Value: %.1f", IsoValue);
+        } else {
+            double dist = VolumeMapper ? VolumeMapper->GetSampleDistance() : 1.0;
+            snprintf(buffer, sizeof(buffer), "Controls (Ray Marching Mode):\n1 : Isosurface Mode\n2 : Ray Marching Mode\nm : Toggle Modes\n+/- : Change Ray Step Size\n[ / ] : Shift Opacity\n\nCurrent Ray Step: %.3f\nOpacity Shift: %.1f", dist, CurrentOpacityShift);
+        }
+        TextInstructions->SetInput(buffer);
+    }
+
     void Execute(vtkObject* caller, unsigned long eventId, void* callData) override
     {
         vtkRenderWindowInteractor* interactor = static_cast<vtkRenderWindowInteractor*>(caller);
@@ -125,6 +138,7 @@ public:
                     std::cout << "Ray step size decreased to: " << dist << std::endl;
                 }
             }
+            UpdateText();
             interactor->Render();
             return;
         }
@@ -132,6 +146,7 @@ public:
         if (keyCode == '-' || keyCode == '_') {
             if (IsIsoMode) {
                 IsoValue -= 50.0;
+                if (IsoValue < 0.0) IsoValue = 0.0;
                 if (Contour1) Contour1->SetValue(0, IsoValue);
                 std::cout << "Iso-value decreased to: " << IsoValue << std::endl;
             } else {
@@ -141,6 +156,7 @@ public:
                     std::cout << "Ray step size increased to: " << dist << std::endl;
                 }
             }
+            UpdateText();
             interactor->Render();
             return;
         }
@@ -156,9 +172,10 @@ public:
                 CurrentOpacityShift += 20.0;
                 SetupTransferFunction(FilePrefix, Ctf, Otf, CurrentOpacityShift);
                 std::cout << "Opacity window shifted by: " << CurrentOpacityShift << std::endl;
-                interactor->Render();
             }
         }
+        UpdateText();
+        interactor->Render();
     }
 
     void SetIsoMode(vtkRenderWindowInteractor* interactor)
@@ -170,7 +187,7 @@ public:
         if (ScalarWidget) ScalarWidget->EnabledOff();
         
         if (RenderWindow) RenderWindow->SetWindowName("Combined Volume Renderer - Isosurface Mode");
-        if (TextInstructions) TextInstructions->SetInput("Controls (Isosurface Mode):\n1 : Isosurface Mode\n2 : Ray Marching Mode\nm : Toggle Modes\n+/- : Change Iso-value");
+        UpdateText();
         
         std::cout << "Mode: Isosurface" << std::endl;
         interactor->Render();
@@ -185,7 +202,7 @@ public:
         if (ScalarWidget) ScalarWidget->EnabledOn();
         
         if (RenderWindow) RenderWindow->SetWindowName("Combined Volume Renderer - Ray Marching Mode");
-        if (TextInstructions) TextInstructions->SetInput("Controls (Ray Marching Mode):\n1 : Isosurface Mode\n2 : Ray Marching Mode\nm : Toggle Modes\n+/- : Change Ray Step Size\n[ / ] : Shift Opacity Window");
+        UpdateText();
         
         std::cout << "Mode: Ray Marching" << std::endl;
         interactor->Render();
