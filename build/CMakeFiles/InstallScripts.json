@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"D:/UTM/Year 3/Sem 2/DATA VISUALISATION/Project 2/DV_Volume-FLow/build/cmake_install.cmake"
+		"/Users/taiyitian/tian/degree/Y3S2/Data_visualization/DV_Volume-FLow/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

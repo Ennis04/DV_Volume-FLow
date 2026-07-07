@@ -17,7 +17,9 @@
 #include "vtkStreamTracer.h"
 #include "vtkRungeKutta4.h"
 #include "vtkTubeFilter.h"
+#include "vtkVectorNorm.h"
 #include "vtkProperty.h"
+#include "vtkDataObject.h"
 #include "vtkCamera.h"
 #include "vtkPointData.h"
 #include "vtkSmartPointer.h"
@@ -776,6 +778,7 @@ int main(int argc, char** argv)
     glyph->SetScaleFactor(config.glyphScale);
     glyph->SetScaleModeToScaleByVector();
     glyph->SetVectorModeToUseVector();
+    glyph->SetColorModeToColorByScalar();
     glyph->OrientOn();
 
 
@@ -840,12 +843,19 @@ int main(int argc, char** argv)
     streamGlyph->SetScaleFactor(config.streamGlyphScale);
     streamGlyph->SetScaleModeToDataScalingOff();
     streamGlyph->SetVectorModeToUseVector();
+    streamGlyph->SetColorModeToColorByScalar();
     streamGlyph->OrientOn();
 
 
   // Lookup Table
     vtkLookupTable *lut = vtkLookupTable::New();
     lut->SetHueRange(0.667, 0.0);
+    
+    // Set color range based on vector magnitude
+    double range[2];
+    if (activeVectors) activeVectors->GetRange(range, -1);
+    else { range[0] = 0; range[1] = 100; }
+    lut->SetTableRange(range);
     lut->Build();
 
 
@@ -853,40 +863,40 @@ int main(int argc, char** argv)
     vtkPolyDataMapper *hedgeMapper = vtkPolyDataMapper::New();
     hedgeMapper->SetInputConnection(hhog->GetOutputPort());
     hedgeMapper->SetLookupTable(lut);
-    hedgeMapper->ScalarVisibilityOff();
+    hedgeMapper->ScalarVisibilityOn();
+    hedgeMapper->SetScalarModeToUsePointFieldData();
+    hedgeMapper->SelectColorArray(vectorArrayName.c_str());
 
     vtkPolyDataMapper* glyphMapper = vtkPolyDataMapper::New();
     glyphMapper->SetInputConnection(glyph->GetOutputPort());
     glyphMapper->SetLookupTable(lut);
-    glyphMapper->ScalarVisibilityOff();
+    glyphMapper->ScalarVisibilityOn();
 
     vtkPolyDataMapper* streamMapper = vtkPolyDataMapper::New();
     streamMapper->SetInputConnection(streamTube->GetOutputPort());
     streamMapper->SetLookupTable(lut);
-    streamMapper->ScalarVisibilityOff();
+    streamMapper->ScalarVisibilityOn();
+    streamMapper->SetScalarModeToUsePointFieldData();
+    streamMapper->SelectColorArray(vectorArrayName.c_str());
 
     vtkPolyDataMapper* streamGlyphMapper = vtkPolyDataMapper::New();
     streamGlyphMapper->SetInputConnection(streamGlyph->GetOutputPort());
     streamGlyphMapper->SetLookupTable(lut);
-    streamGlyphMapper->ScalarVisibilityOff();
+    streamGlyphMapper->ScalarVisibilityOn();
 
 
   // Actor
     vtkActor *hedgeActor = vtkActor::New();
     hedgeActor->SetMapper(hedgeMapper);
-    hedgeActor->GetProperty()->SetColor(0.1, 1.0, 0.2);
 
     vtkActor* glyphActor = vtkActor::New();
     glyphActor->SetMapper(glyphMapper);
-    glyphActor->GetProperty()->SetColor(1.0, 0.6, 0.1);
 
     vtkActor* streamActor = vtkActor::New();
     streamActor->SetMapper(streamMapper);
-    streamActor->GetProperty()->SetColor(0.2, 0.7, 1.0);
 
     vtkActor* streamGlyphActor = vtkActor::New();
     streamGlyphActor->SetMapper(streamGlyphMapper);
-    streamGlyphActor->GetProperty()->SetColor(1.0, 1.0, 0.2);
 
 
   // Actors are added to the renderer. An initial camera view is created.
