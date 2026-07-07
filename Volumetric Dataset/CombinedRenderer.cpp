@@ -54,6 +54,26 @@ void SetupTransferFunction(std::string filePrefix, vtkColorTransferFunction* col
         color->AddRGBPoint(80.0, 0.8, 0.2, 0.2); // Reddish internals
         color->AddRGBPoint(255.0, 0.9, 0.9, 0.9);
     } 
+    else if (filePrefix.find("teapot") != std::string::npos) {
+        opacity->AddPoint(0 + opacityShift, 0.0);
+        opacity->AddPoint(20 + opacityShift, 0.0);
+        opacity->AddPoint(100 + opacityShift, 0.5);
+        opacity->AddPoint(255 + opacityShift, 0.9);
+
+        color->AddRGBPoint(0.0, 0.0, 0.0, 0.0);
+        color->AddRGBPoint(100.0, 0.5, 0.5, 0.8); // Blueish
+        color->AddRGBPoint(255.0, 0.9, 0.9, 0.9);
+    }
+    else if (filePrefix.find("aneurism") != std::string::npos) {
+        opacity->AddPoint(0 + opacityShift, 0.0);
+        opacity->AddPoint(20 + opacityShift, 0.0);
+        opacity->AddPoint(80 + opacityShift, 0.5); 
+        opacity->AddPoint(255 + opacityShift, 0.9);
+
+        color->AddRGBPoint(0.0, 0.0, 0.0, 0.0);
+        color->AddRGBPoint(80.0, 0.8, 0.2, 0.2); // Reddish for blood vessels
+        color->AddRGBPoint(255.0, 0.9, 0.9, 0.9);
+    }
     else {
         // Default (Head dataset)
         opacity->AddPoint(20 + opacityShift, 0.0);
@@ -128,7 +148,7 @@ public:
 
         if (keyCode == '+' || keyCode == '=') {
             if (IsIsoMode) {
-                IsoValue += 50.0;
+                IsoValue += 10.0;
                 if (Contour1) Contour1->SetValue(0, IsoValue);
                 std::cout << "Iso-value increased to: " << IsoValue << std::endl;
             } else {
@@ -145,7 +165,7 @@ public:
 
         if (keyCode == '-' || keyCode == '_') {
             if (IsIsoMode) {
-                IsoValue -= 50.0;
+                IsoValue -= 10.0;
                 if (IsoValue < 0.0) IsoValue = 0.0;
                 if (Contour1) Contour1->SetValue(0, IsoValue);
                 std::cout << "Iso-value decreased to: " << IsoValue << std::endl;
@@ -242,6 +262,12 @@ int main (int argc, char **argv)
   } else if (filePrefix.find("frog") != std::string::npos) {
       initialIso1 = 40.0;
       initialIso2 = 80.0;
+  } else if (filePrefix.find("teapot") != std::string::npos) {
+      initialIso1 = 50.0;
+      initialIso2 = 150.0;
+  } else if (filePrefix.find("aneurism") != std::string::npos) {
+      initialIso1 = 40.0;
+      initialIso2 = 100.0;
   }
 
   // --- ISOSURFACE SETUP ---
